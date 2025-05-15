@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Transportation System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+    #map { height: 100vh; width: 100vw; z-index: 0; }
+    .panel {
+      position: absolute; top: 10px; left: 10px; background: #1e1e1e;
+      padding: 15px; border-radius: 10px; z-index: 1000; width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+    .panel h3 { margin-top: 0; font-size: 1.2em; color: #4caf50; }
+    .panel input, .panel button {
+      width: 100%; margin: 5px 0; padding: 8px; border: none; border-radius: 5px;
+    }
+    .panel input { background: #2c2c2c; color: white; }
+    .panel button { background-color: #4caf50; color: white; cursor: pointer; }
+    .panel button:hover { background-color: #45a049; }
+    .icon-bar {
+      position: absolute; bottom: 20px; right: 20px; z-index: 999;
+      display: flex; flex-direction: column; gap: 15px;
+    }
+    .icon-bar i {
+      background: #1e1e1e; padding: 12px; border-radius: 50%;
+      color: white; cursor: pointer; font-size: 1.4em;
+      box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+    .output { font-size: 0.9em; margin-top: 10px; color: #ddd; }
+  </style>
+</head>
+<body>
+    
+  <div id="map"></div>
+  
+  <div class="panel">
+    <h3>🧭 Smart Transport System</h3>
+    <input type="text" id="cityA" placeholder="Enter Starting City">
+    <input type="text" id="cityB" placeholder="Enter Destination City">
+    <button onclick="calculateDistanceAndTime()">Calculate Route</button>
+    
+    <div class="output" id="distanceOutput"></div>
+    <hr>
+    <input type="text" id="destinationInput" placeholder="Quick Route & Weather">
+    <button onclick="findRoute()">Check Route</button>
+  </div>
+  
+  <div class="icon-bar">
+    <i class="fas fa-moon" title="Toggle Dark/Light" onclick="toggleTheme()"></i>
+    <i class="fas fa-history" title="Recent Routes" onclick="showHistory()"></i>
+    <i class="fas fa-save" title="Save Route" onclick="saveCurrentRoute()"></i>
+    <i class="fas fa-road" title="Replay Route" onclick="replayRoute()"></i>
+  </div>
+  
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
